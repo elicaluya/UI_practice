@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body> 
+
+<h1>Enter a date</h1>
+
+
+<input id="userInput" type="text" maxlength="25" value="Format: MM/DD/YYYY" onfocus="this.value=''">
+<button id="subButton" type="button" onclick="display()">Display</button>
+
+<div>
+	<p id="result">Result here</p>
+</div>
+
+<script>
+	var input = document.getElementById("userInput");
+	input.addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+	   event.preventDefault();
+	   document.getElementById("subButton").click();
+	  }
+	});
+
+	for (var i = 0; i < input.length; i++) {
+		input[i];
+	}
+
+	function display() {	
+		var word = document.getElementById('userInput').value;
+
+		if (word.length < 3){
+			alert("Must be at least 3 characters");
+		} else {
+			document.getElementById('result').innerHTML = word;
+		}
+	}
+
+	
+</script>
+
+</body>
+</html>
