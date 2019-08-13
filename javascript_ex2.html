@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <style>
-	
+	@import url('https://fonts.googleapis.com/css?family=Beth+Ellen&display=swap');
+	@import url('https://fonts.googleapis.com/css?family=Indie+Flower&display=swap');
+
+	html {
+		background-image: linear-gradient(to right, #03a9fc, white);
+	}
+
+	h1, body {
+		font-family: 'Beth Ellen', cursive;
+	}
+
+	p {
+		font-family: 'Indie Flower', cursive;
+		font-size: 200%;
+	}
 
 </style>
 </head>
@@ -16,46 +31,62 @@
 	<br>
 	Last Name: <input type="text" id="last_name" value="Caluya">
 	<br><br>
-	<button onclick="display()">Display</button>
+	<button onclick="reverse()">Reverse</button>
 	<br>
-	<button onclick="clearDisplay()">Clear Display</button>
-	<br>
-	<button onclick="clearInput()">Clear Input</button>
+	<button id="hide_show_btn">Hide/Show</button>
 	<br>
 	
 	<p id="first_name_text"></p>
 	<p id="last_name_text"></p>
+
+	<br>
+	<button onclick="clearInput()">Clear Input</button>
+	<br>
 </div>
 
-<script>
-function display() {
-	var array = [];
+<script type="text/javascript">
 
-	array[0] = document.getElementById("first_name").value;
-	array[1] = document.getElementById("last_name").value
+var firstNameLetters;
+var lastNameLetters;
 
-	var firstNameLetters = array[0][0];
-	var lastNameLetters = array[1][0];
+function reverse() {
 
-	for (var i = 1; i < array[0].length; i++){
-		firstNameLetters += " " + array[0][i];
-		document.getElementById("first_name_text").innerHTML = firstNameLetters;
+	var firstName = document.getElementById("first_name").value;
+	var lastName = document.getElementById("last_name").value;
+
+	if (firstName === ""){
+		window.alert("No Entry for First Name");
 	}
-	for (var i = 1; i < array[1].length; i++){
-		lastNameLetters += " " + array[1][i];
-		document.getElementById("last_name_text").innerHTML = lastNameLetters;
+	if (lastName === ""){
+		window.alert("No Entry for Last Name");
 	}
-}
 
-function clearDisplay() {
-	document.getElementById("first_name_text").innerHTML = "";
-	document.getElementById("last_name_text").innerHTML = "";
+	firstNameLetters = firstName[firstName.length-1];
+	lastNameLetters = lastName[lastName.length-1];
+
+	for (var i = firstName.length-1; i > 0; i--){
+		firstNameLetters += " " + firstName[i-1];
+	}
+	for (var i = lastName.length-1; i > 0 ; i--){
+		lastNameLetters += " " + lastName[i-1];
+	}
+
+	document.getElementById("first_name_text").innerHTML = firstNameLetters;
+	document.getElementById("last_name_text").innerHTML = lastNameLetters;
 }
 
 function clearInput(){
 	document.getElementById("first_name").value = "";
 	document.getElementById("last_name").value = "";
 }
+
+$(document).ready(function(){
+	$('#hide_show_btn').click(function(){
+		var first = this.firstNameLetters;
+		var last = this.lastNameLetters;
+		$("p").fadeToggle();
+	});
+});
 
 </script>
 
