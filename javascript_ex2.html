@@ -18,14 +18,43 @@
 	<br><br>
 	<button onclick="display()">Display</button>
 	<br>
-	<p id="display_text"></p>
+	<button onclick="clearDisplay()">Clear Display</button>
+	<br>
+	<button onclick="clearInput()">Clear Input</button>
+	<br>
+	
+	<p id="first_name_text"></p>
+	<p id="last_name_text"></p>
 </div>
 
 <script>
 function display() {
-	var firstName = document.getElementById("first_name").value;
-	var lastName = document.getElementById("last_name").value;
-	document.getElementById("display_text").innerHTML = firstName + " " + lastName;
+	var array = [];
+
+	array[0] = document.getElementById("first_name").value;
+	array[1] = document.getElementById("last_name").value
+
+	var firstNameLetters = array[0][0];
+	var lastNameLetters = array[1][0];
+
+	for (var i = 1; i < array[0].length; i++){
+		firstNameLetters += " " + array[0][i];
+		document.getElementById("first_name_text").innerHTML = firstNameLetters;
+	}
+	for (var i = 1; i < array[1].length; i++){
+		lastNameLetters += " " + array[1][i];
+		document.getElementById("last_name_text").innerHTML = lastNameLetters;
+	}
+}
+
+function clearDisplay() {
+	document.getElementById("first_name_text").innerHTML = "";
+	document.getElementById("last_name_text").innerHTML = "";
+}
+
+function clearInput(){
+	document.getElementById("first_name").value = "";
+	document.getElementById("last_name").value = "";
 }
 
 </script>
