@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+	
+
+</style>
+</head>
+
+<body>
+
+<div class="enterInfo" align="center">
+	<h1>Enter Info</h1>
+	First Name: <input type="text" id="first_name" value="Elijah">
+	<br>
+	Last Name: <input type="text" id="last_name" value="Caluya">
+	<br><br>
+	<button onclick="display()">Display</button>
+	<br>
+	<p id="display_text"></p>
+</div>
+
+<script>
+function display() {
+	var firstName = document.getElementById("first_name").value;
+	var lastName = document.getElementById("last_name").value;
+	document.getElementById("display_text").innerHTML = firstName + " " + lastName;
+}
+
+</script>
+
+</body>
+
+</html>
