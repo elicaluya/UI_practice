@@ -15,6 +15,14 @@
 			font-size: 150%;
 		}
 
+		button:hover {
+			background-color: #66ccff;
+		}
+
+		#rock_button, #paper_button, #scissors_button {
+			margin: 10px;
+		}
+
 		.content {
 			max-width: 500px;
 			margin: auto;
@@ -30,9 +38,12 @@
 
 		<h1>Pick One:</h1>
 
-		<button id="rock_button" onclick="pickRock()">Rock</button>
-		<button id="paper_button" onclick="pickPaper()">Paper</button>
-		<button id="scissors_button" onclick="pickScissors()">Scissors</button>
+		<div class="choice_buttons">
+			<button id="rock_button" onclick="pickRock()">Rock</button>
+			<button id="paper_button" onclick="pickPaper()">Paper</button>
+			<button id="scissors_button" onclick="pickScissors()">Scissors</button>
+		</div>
+		
 		<br>
 
 		<h3 class="default_text">You Picked:</h3>
@@ -59,8 +70,8 @@
 		var resultText = document.getElementById("result");
 
 
-		// Disable reset button on startup
-		$("#reset_button").prop('disabled', true);
+		// Hide reset button on startup
+		$("#reset_button").hide();
 		
 		// Hide Default text when first opening window
 		$(".default_text").hide();
@@ -73,21 +84,21 @@
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
-				$("#reset_button").prop('disabled', false);
+				$("#reset_button").show();
 			});
 			$("#paper_button").click(function(){
 				$(".default_text").show();
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
-				$("#reset_button").prop('disabled', false);
+				$("#reset_button").show();
 			});
 			$("#scissors_button").click(function(){
 				$(".default_text").show();
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
-				$("#reset_button").prop('disabled', false);
+				$("#reset_button").show();
 			});
 
 			// Hide Default text
@@ -96,7 +107,7 @@
 				$("#rock_button").prop('disabled', false);
 				$("#paper_button").prop('disabled', false);
 				$("#scissors_button").prop('disabled', false);
-				$("#reset_button").prop('disabled', true);
+				$("#reset_button").hide();
 			});
 		});
 		
