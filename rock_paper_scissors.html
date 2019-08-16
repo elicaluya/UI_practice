@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock, Paper, Scissors</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+	<style type="text/css">
+		button {
+			background-color: white;
+			padding: 20px 20px;
+			text-align: center;
+			border-radius: 10px;
+			font-size: 150%;
+		}
+
+		.content {
+			max-width: 500px;
+			margin: auto;
+			text-align: center;
+			justify-content: center;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="content">
+
+		<h1>Pick One:</h1>
+
+		<button id="rock_button" onclick="pickRock()">Rock</button>
+		<button id="paper_button" onclick="pickPaper()">Paper</button>
+		<button id="scissors_button" onclick="pickScissors()">Scissors</button>
+		<br>
+
+		<h3 class="default_text">You Picked:</h3>
+		<p id="user_choice"></p>
+		<br>
+
+		<h3 class="default_text">Opponent Picked...</h3>
+		<p id="opp_choice"></p>
+		<br>
+
+		<h3 id="result"></h3>
+		<p class="default_text">Press reset to play again</p>
+		<br>
+
+		<button id="reset_button" onclick="resetGame()">Reset</button>
+
+	</div>
+
+	<script type="text/javascript">
+		var choiceNum;
+		var oppChoice;
+		var choiceText = document.getElementById("user_choice");
+		var oppText = document.getElementById("opp_choice");
+		var resultText = document.getElementById("result");
+
+
+		// Disable reset button on startup
+		$("#reset_button").prop('disabled', true);
+		
+		// Hide Default text when first opening window
+		$(".default_text").hide();
+
+		// Show/Hide Default text after pressing button
+		$(document).ready(function(){
+			// Show Default text
+			$("#rock_button").click(function(){
+				$(".default_text").show();
+				$("#rock_button").prop('disabled', true);
+				$("#paper_button").prop('disabled', true);
+				$("#scissors_button").prop('disabled', true);
+				$("#reset_button").prop('disabled', false);
+			});
+			$("#paper_button").click(function(){
+				$(".default_text").show();
+				$("#rock_button").prop('disabled', true);
+				$("#paper_button").prop('disabled', true);
+				$("#scissors_button").prop('disabled', true);
+				$("#reset_button").prop('disabled', false);
+			});
+			$("#scissors_button").click(function(){
+				$(".default_text").show();
+				$("#rock_button").prop('disabled', true);
+				$("#paper_button").prop('disabled', true);
+				$("#scissors_button").prop('disabled', true);
+				$("#reset_button").prop('disabled', false);
+			});
+
+			// Hide Default text
+			$("#reset_button").click(function(){
+				$(".default_text").hide();
+				$("#rock_button").prop('disabled', false);
+				$("#paper_button").prop('disabled', false);
+				$("#scissors_button").prop('disabled', false);
+				$("#reset_button").prop('disabled', true);
+			});
+		});
+		
+
+		// Function when User presses rock button
+		function pickRock() {
+			choiceNum = 0;
+			document.getElementById("user_choice").innerHTML = "Rock";
+			document.getElementById("rock_button").style.backgroundColor = "yellow";
+			choiceText.style.display = "block";
+			pickOppChoice();
+			getResult();
+		}
+
+		// Function when User presses paper button
+		function pickPaper() {
+			choiceNum = 1;
+			document.getElementById("user_choice").innerHTML = "Paper";
+			document.getElementById("paper_button").style.backgroundColor = "yellow";
+			choiceText.style.display = "block";
+			pickOppChoice();
+			getResult();
+		}
+
+		// Function when User presses scissors button
+		function pickScissors() {
+			choiceNum = 2;
+			document.getElementById("user_choice").innerHTML = "Scissors";
+			document.getElementById("scissors_button").style.backgroundColor = "yellow";
+			choiceText.style.display = "block";
+			pickOppChoice();
+			getResult();
+		}
+
+		// Function for randomly choosing opponent's move
+		function pickOppChoice() {
+			oppChoice = Math.floor(Math.random() * 3);
+
+			if (oppChoice === 0) {document.getElementById("opp_choice").innerHTML = "Rock";}
+			else if (oppChoice === 1) {document.getElementById("opp_choice").innerHTML = "Paper";}
+			else if (oppChoice === 2) {document.getElementById("opp_choice").innerHTML = "Scissors";}
+
+			oppText.style.display = "block";
+		}
+
+		// Determine winner, loser, or tie game
+		function getResult() {
+			// If there is a tie
+			if (choiceNum === oppChoice) {document.getElementById("result").innerHTML = "Tie Game"; resultText.style.display="block";}
+
+			// If User chooses Rock
+			else if (choiceNum === 0 && oppChoice === 1) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
+				document.getElementById("rock_button").style.backgroundColor = "red";}
+			else if (choiceNum === 0 && oppChoice === 2) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
+				document.getElementById("rock_button").style.backgroundColor = "green";}
+
+			// If User chooses Paper
+			else if (choiceNum === 1 && oppChoice === 2) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
+				document.getElementById("paper_button").style.backgroundColor = "red";}
+			else if (choiceNum === 1 && oppChoice === 0) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
+				document.getElementById("paper_button").style.backgroundColor = "green";}
+
+			// If User chooses Scissors
+			else if (choiceNum === 2 && oppChoice === 0) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
+				document.getElementById("scissors_button").style.backgroundColor = "red";}
+			else if (choiceNum === 2 && oppChoice === 1) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
+				document.getElementById("scissors_button").style.backgroundColor = "green";}
+		}
+
+		// Reset game after user chooses
+		function resetGame() {
+			choiceNum = null;
+			document.getElementById("rock_button").style.backgroundColor = "white";
+			document.getElementById("paper_button").style.backgroundColor = "white";
+			document.getElementById("scissors_button").style.backgroundColor = "white";
+			choiceText.style.display = "none";
+			oppText.style.display = "none";
+			resultText.style.display = "none";
+		}
+	</script>
+</body>
+</html>
