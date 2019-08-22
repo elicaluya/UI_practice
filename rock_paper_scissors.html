@@ -39,40 +39,36 @@
 </head>
 <body>
 	<div class="content">
+		<form id="layout">
 
-		<h1>Pick One:</h1>
+			<h1>Pick One:</h1>
 
-		<div class="choice_buttons">
-			<button id="rock_button" onclick="pickRock()">Rock</button>
-			<button id="paper_button" onclick="pickPaper()">Paper</button>
-			<button id="scissors_button" onclick="pickScissors()">Scissors</button>
-		</div>
+			<div class="choice_buttons">
+				<button id="rock_button" onclick="pickChoice(0)">Rock</button>
+				<button id="paper_button" onclick="pickChoice(1)">Paper</button>
+				<button id="scissors_button" onclick="pickChoice(2)">Scissors</button>
+			</div>
 		
-		<br>
+			<br>
 
-		<h3 class="default_text">You Picked:</h3>
-		<p id="user_choice"></p>
-		<br>
+			<h3 class="default_text">You Picked:</h3>
+			<p id="user_choice"></p>
+			<br>
 
-		<h3 class="default_text">Opponent Picked...</h3>
-		<p id="opp_choice"></p>
-		<br>
+			<h3 class="default_text">Opponent Picked...</h3>
+			<p id="opp_choice"></p>
+			<br>
 
-		<h3 id="result"></h3>
-		<p class="default_text">Press reset to play again</p>
-		<br>
+			<h3 id="result"></h3>
+			<p class="default_text">Press reset to play again</p>
+			<br>
 
-		<button id="reset_button" onclick="resetGame()">Reset</button>
+			<button id="reset_button" onclick="resetGame()">Reset</button>
 
+		</form>
 	</div>
 
 	<script type="text/javascript">
-		var choiceNum;
-		var oppChoice;
-		var choiceText = document.getElementById("user_choice");
-		var oppText = document.getElementById("opp_choice");
-		var resultText = document.getElementById("result");
-
 
 		// Hide reset button on startup
 		$("#reset_button").hide();
@@ -88,6 +84,8 @@
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
+				$("#paper_button").css('background-color', 'white');
+				$("#scissors_button").css('background-color', 'white');
 				$("#reset_button").show();
 			});
 			$("#paper_button").click(function(){
@@ -95,6 +93,8 @@
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
+				$("#rock_button").css('background-color', 'white');
+				$("#scissors_button").css('background-color', 'white');
 				$("#reset_button").show();
 			});
 			$("#scissors_button").click(function(){
@@ -102,49 +102,12 @@
 				$("#rock_button").prop('disabled', true);
 				$("#paper_button").prop('disabled', true);
 				$("#scissors_button").prop('disabled', true);
+				$("#rock_button").css('background-color', 'white');
+				$("#paper_button").css('background-color', 'white');
 				$("#reset_button").show();
 			});
-
-			// Hide Default text
-			$("#reset_button").click(function(){
-				$(".default_text").hide();
-				$("#rock_button").prop('disabled', false);
-				$("#paper_button").prop('disabled', false);
-				$("#scissors_button").prop('disabled', false);
-				$("#reset_button").hide();
-			});
 		});
-		
 
-		// Function when User presses rock button
-		function pickRock() {
-			choiceNum = 0;
-			document.getElementById("user_choice").innerHTML = "Rock";
-			document.getElementById("rock_button").style.backgroundColor = "yellow";
-			choiceText.style.display = "block";
-			pickOppChoice();
-			getResult();
-		}
-
-		// Function when User presses paper button
-		function pickPaper() {
-			choiceNum = 1;
-			document.getElementById("user_choice").innerHTML = "Paper";
-			document.getElementById("paper_button").style.backgroundColor = "yellow";
-			choiceText.style.display = "block";
-			pickOppChoice();
-			getResult();
-		}
-
-		// Function when User presses scissors button
-		function pickScissors() {
-			choiceNum = 2;
-			document.getElementById("user_choice").innerHTML = "Scissors";
-			document.getElementById("scissors_button").style.backgroundColor = "yellow";
-			choiceText.style.display = "block";
-			pickOppChoice();
-			getResult();
-		}
 
 		// Function for randomly choosing opponent's move
 		function pickOppChoice() {
@@ -154,42 +117,71 @@
 			else if (oppChoice === 1) {document.getElementById("opp_choice").innerHTML = "Paper";}
 			else if (oppChoice === 2) {document.getElementById("opp_choice").innerHTML = "Scissors";}
 
-			oppText.style.display = "block";
+			return oppChoice;
 		}
+
 
 		// Determine winner, loser, or tie game
-		function getResult() {
+		function getResult(choiceNum, oppChoice) {
 			// If there is a tie
-			if (choiceNum === oppChoice) {document.getElementById("result").innerHTML = "Tie Game"; resultText.style.display="block";}
+			if (choiceNum === oppChoice) {document.getElementById("result").innerHTML = "Tie Game";}
 
 			// If User chooses Rock
-			else if (choiceNum === 0 && oppChoice === 1) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
-				document.getElementById("rock_button").style.backgroundColor = "red";}
-			else if (choiceNum === 0 && oppChoice === 2) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
-				document.getElementById("rock_button").style.backgroundColor = "green";}
+			else if (choiceNum === 0 && oppChoice === 1) {
+				document.getElementById("result").innerHTML = "You Lose"; 
+				document.getElementById("rock_button").style.backgroundColor = "red";
+			}
+			else if (choiceNum === 0 && oppChoice === 2) {
+				document.getElementById("result").innerHTML = "You Win";
+				document.getElementById("rock_button").style.backgroundColor = "green";
+			}
 
 			// If User chooses Paper
-			else if (choiceNum === 1 && oppChoice === 2) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
-				document.getElementById("paper_button").style.backgroundColor = "red";}
-			else if (choiceNum === 1 && oppChoice === 0) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
-				document.getElementById("paper_button").style.backgroundColor = "green";}
+			else if (choiceNum === 1 && oppChoice === 2) {
+				document.getElementById("result").innerHTML = "You Lose";
+				document.getElementById("paper_button").style.backgroundColor = "red";
+			}
+			else if (choiceNum === 1 && oppChoice === 0) {
+				document.getElementById("result").innerHTML = "You Win";
+				document.getElementById("paper_button").style.backgroundColor = "green";
+			}
 
 			// If User chooses Scissors
-			else if (choiceNum === 2 && oppChoice === 0) {document.getElementById("result").innerHTML = "You Lose"; resultText.style.display="block";
-				document.getElementById("scissors_button").style.backgroundColor = "red";}
-			else if (choiceNum === 2 && oppChoice === 1) {document.getElementById("result").innerHTML = "You Win"; resultText.style.display="block";
-				document.getElementById("scissors_button").style.backgroundColor = "green";}
+			else if (choiceNum === 2 && oppChoice === 0) {
+				document.getElementById("result").innerHTML = "You Lose";
+				document.getElementById("scissors_button").style.backgroundColor = "red";
+			}
+			else if (choiceNum === 2 && oppChoice === 1) {
+				document.getElementById("result").innerHTML = "You Win";
+				document.getElementById("scissors_button").style.backgroundColor = "green";
+			}
 		}
+		
+
+		function pickChoice(choiceNum) {
+			// If user chooses Rock
+			if (choiceNum === 0){
+				document.getElementById("user_choice").innerHTML = "Rock";
+				document.getElementById("rock_button").style.backgroundColor = "yellow";
+			}
+			// If user chooses Paper
+			else if (choiceNum === 1){
+				document.getElementById("user_choice").innerHTML = "Paper";
+				document.getElementById("paper_button").style.backgroundColor = "yellow";
+			}
+			// If user chooses Scissors
+			else if (choiceNum === 2){
+				document.getElementById("user_choice").innerHTML = "Scissors";
+				document.getElementById("scissors_button").style.backgroundColor = "yellow";
+			}
+			//send info to other functions to determine result
+			getResult(choiceNum, pickOppChoice());
+		}
+
 
 		// Reset game after user chooses
 		function resetGame() {
-			choiceNum = null;
-			document.getElementById("rock_button").style.backgroundColor = "white";
-			document.getElementById("paper_button").style.backgroundColor = "white";
-			document.getElementById("scissors_button").style.backgroundColor = "white";
-			choiceText.style.display = "none";
-			oppText.style.display = "none";
-			resultText.style.display = "none";
+			document.getElementById("layout").reset();
 		}
 	</script>
 </body>
