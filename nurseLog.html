@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<style type="text/css">
+		table {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		th, td {
+			height: 30px;
+			border: 1px solid black;
+		}
+
+		input {
+			width: 90%;
+			text-align: center;
+		}
+
+		input[type=text]{
+			border: 3px solid black; 
+		}
+
+		.mileage {
+			border: 1px solid blue;
+		}
+
+		.seventy {
+			border: 1px solid green;
+		}
+
+		.twenty {
+			border: 1px solid orange;
+		}
+
+	</style>
+	
+</head>
+<body>
+	<table style="width:100%">
+		<tr>
+			<th>Day</th>
+			<th>Mileage</th>
+			<th>71 First visit w/o OASIS</th>
+			<th>72 Revisits/th>
+			<th>73 First visit w/OASIS</th>
+			<th>74 Resumption</th>
+			<th>20 Hospice Open @ Home</th>
+			<th>21 Hospice Open @ SNF</th>
+			<th>22 Revisits @ Home</th>
+			<th>23 Revisits @ SNF</th>
+			<th>Total</th>
+		</tr>
+		<tr>
+			<td>Sunday</td>
+			<td><input type="number" id="sun_mileage" class="mileage"></td>
+			<td><input type="number" id="sun_71" class="seventy"></td>
+			<td><input type="number" id="sun_72" class="seventy"></td>
+			<td><input type="number" id="sun_73" class="seventy"></td>
+			<td><input type="number" id="sun_74" class="seventy"></td>
+			<td><input type="number" id="sun_20" class="twenty"></td>
+			<td><input type="number" id="sun_21" class="twenty"></td>
+			<td><input type="number" id="sun_22" class="twenty"></td>
+			<td><input type="number" id="sun_23" class="twenty"></td>
+			<td><input type="text" id="sun_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Monday</td>
+			<td><input type="number" id="mon_mileage" class="mileage"></td>
+			<td><input type="number" id="mon_71" class="seventy"></td>
+			<td><input type="number" id="mon_72" class="seventy"></td>
+			<td><input type="number" id="mon_73" class="seventy"></td>
+			<td><input type="number" id="mon_74" class="seventy"></td>
+			<td><input type="number" id="mon_20" class="twenty"></td>
+			<td><input type="number" id="mon_21" class="twenty"></td>
+			<td><input type="number" id="mon_22" class="twenty"></td>
+			<td><input type="number" id="mon_23" class="twenty"></td>
+			<td><input type="text" id="mon_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Tuesday</td>
+			<td><input type="number" id="tues_mileage" class="mileage"></td>
+			<td><input type="number" id="tues_71" class="seventy"></td>
+			<td><input type="number" id="tues_72" class="seventy"></td>
+			<td><input type="number" id="tues_73" class="seventy"></td>
+			<td><input type="number" id="tues_74" class="seventy"></td>
+			<td><input type="number" id="tues_20" class="twenty"></td>
+			<td><input type="number" id="tues_21" class="twenty"></td>
+			<td><input type="number" id="tues_22" class="twenty"></td>
+			<td><input type="number" id="tues_23" class="twenty"></td>
+			<td><input type="text" id="tues_total"class="total"></td>
+		</tr>
+		<tr>
+			<td>Wednesday</td>
+			<td><input type="number" id="wed_mileage" class="mileage"></td>
+			<td><input type="number" id="wed_71" class="seventy"></td>
+			<td><input type="number" id="wed_72" class="seventy"></td>
+			<td><input type="number" id="wed_73" class="seventy"></td>
+			<td><input type="number" id="wed_74" class="seventy"></td>
+			<td><input type="number" id="wed_20" class="twenty"></td>
+			<td><input type="number" id="wed_21" class="twenty"></td>
+			<td><input type="number" id="wed_22" class="twenty"></td>
+			<td><input type="number" id="wed_23" class="twenty"></td>
+			<td><input type="text" id="wed_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Thursday</td>
+			<td><input type="number" id="thurs_mileage" class="mileage"></td>
+			<td><input type="number" id="thurs_71" class="seventy"></td>
+			<td><input type="number" id="thurs_72" class="seventy"></td>
+			<td><input type="number" id="thurs_73" class="seventy"></td>
+			<td><input type="number" id="thurs_74" class="seventy"></td>
+			<td><input type="number" id="thurs_20" class="twenty"></td>
+			<td><input type="number" id="thurs_21" class="twenty"></td>
+			<td><input type="number" id="thurs_22" class="twenty"></td>
+			<td><input type="number" id="thurs_23" class="twenty"></td>
+			<td><input type="text" id="thurs_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Friday</td>
+			<td><input type="number" id="fri_mileage" class="mileage"></td>
+			<td><input type="number" id="fri_71" class="seventy"></td>
+			<td><input type="number" id="fri_72" class="seventy"></td>
+			<td><input type="number" id="fri_73" class="seventy"></td>
+			<td><input type="number" id="fri_74" class="seventy"></td>
+			<td><input type="number" id="fri_20" class="twenty"></td>
+			<td><input type="number" id="fri_21" class="twenty"></td>
+			<td><input type="number" id="fri_22" class="twenty"></td>
+			<td><input type="number" id="fri_23" class="twenty"></td>
+			<td><input type="text" id="fri_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Saturday</td>
+			<td><input type="number" id="sat_mileage" class="mileage"></td>
+			<td><input type="number" id="sat_71" class="seventy"></td>
+			<td><input type="number" id="sat_72" class="seventy"></td>
+			<td><input type="number" id="sat_73" class="seventy"></td>
+			<td><input type="number" id="sat_74" class="seventy"></td>
+			<td><input type="number" id="sat_20" class="twenty"></td>
+			<td><input type="number" id="sat_21" class="twenty"></td>
+			<td><input type="number" id="sat_22" class="twenty"></td>
+			<td><input type="number" id="sat_23" class="twenty"></td>
+			<td><input type="text" id="sat_total" class="total"></td>
+		</tr>
+		<tr>
+			<td>Total</td>
+			<td><input type="text" id="tot_mileage" class="mileage"></td>
+			<td><input type="text" id="tot_71" class="seventy"></td>
+			<td><input type="text" id="tot_72" class="seventy"></td>
+			<td><input type="text" id="tot_73" class="seventy"></td>
+			<td><input type="text" id="tot_74" class="seventy"></td>
+			<td><input type="text" id="tot_20" class="twenty"></td>
+			<td><input type="text" id="tot_21" class="twenty"></td>
+			<td><input type="text" id="tot_22" class="twenty"></td>
+			<td><input type="text" id="tot_23" class="twenty"></td>
+			<td><input type="text" id="tot_total" class="total"></td>
+		</tr>		
+	</table>
+
+	<br>
+	<button onclick="calcTotal()">Calculate</button>
+
+
+	<script type="text/javascript">
+
+		function calcMile(miles){
+			return miles * 0.45;
+		}
+
+		function calc71_74(num){
+			return num * 87;
+		}
+
+		function calc72_22_23(num){
+			return num * 68;
+		}
+
+		function calc73(num){
+			return num * 120;
+		}
+
+		function calc20_21(num){
+			return num * 135;
+		}
+
+		function calcSunday() {
+			var miles = calcMile(document.getElementById("sun_mileage").value);
+			var sun71 = calc71_74(document.getElementById("sun_71").value);
+			var sun72 = calc72_22_23(document.getElementById("sun_72").value);
+			var sun73 = calc73(document.getElementById("sun_73").value);
+			var sun74 = calc71_74(document.getElementById("sun_74").value);
+			var sun20 = calc20_21(document.getElementById("sun_20").value);
+			var sun21 = calc20_21(document.getElementById("sun_21").value);
+			var sun22 = calc72_22_23(document.getElementById("sun_22").value);
+			var sun23 = calc72_22_23(document.getElementById("sun_23").value);
+		
+			return miles + sun71 + sun72 + sun73 + sun74 + sun20 + sun21 + sun22 + sun23;
+		}
+		
+		function calcTotal(){
+			document.getElementById("sun_total").value = calcSunday();
+		}
+	</script>
+</body>
+</html>
