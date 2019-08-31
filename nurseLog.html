@@ -371,6 +371,7 @@
 			document.getElementById("thurs_total").value = calcThursday();
 			document.getElementById("fri_total").value = calcFriday();
 			document.getElementById("sat_total").value = calcSaturday();
+			document.getElementById("tot_total").value = calcSunday()+calcMonday()+calcTuesday()+calcWednesday()+calcThursday()+calcFriday()+calcSaturday();
 
 			// Display totals for each category
 			document.getElementById("tot_mileage").value = calcAllMile();
