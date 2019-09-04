@@ -1,0 +1,28 @@
+function isPalindrome(s){
+	if (s.length === 0 || s.length === 1)
+		return true;
+
+	for (var i = 0; i < s.length/2 - 1; i++){
+		if (s[i] != s[s.length - i -1])
+			return false;
+	}
+	return true;
+}
+
+
+function isPalindrome(s){
+	return s.split('').reverse().join('') === s;
+}
+
+
+
+function isPalindrome(s){
+	if (s[0] !== s[s.length -1])
+		return false;
+
+	if (s.length === 0 || s.length === 1)
+		return true;
+
+
+	return isPalindrome(s.slice(1,-1));
+}
